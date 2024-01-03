@@ -6,13 +6,20 @@ function App() {
   const [input, setInput] = useState({});
   const [dataArray, setDataArray] = useState([]);
   const [checkedIds, setCheckedIds] = useState([]);
+  const [selectedColor, setSelectedColor] = useState("0");
 
   const handleChange = (e) => {
     const uniqueIdentifier = `${Date.now()}_${Math.random()}`;
     console.log(uniqueIdentifier);
     console.log("input #", e.target.value);
-    setInput({ id: uniqueIdentifier, value: e.target.value });
+    setInput({
+      id: uniqueIdentifier,
+      value: e.target.value,
+      color: "no color",
+    });
   };
+
+  console.log("dataArray #", dataArray);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -52,6 +59,16 @@ function App() {
   };
   console.log("checkedIds #", checkedIds);
 
+  /* Do this later, select the color and add segregate the data based on the color selected*/
+  const selectedColorChange = (event, item) => {
+    console.log("selectedColorChange #", event.target.value, item);
+    const filterData = dataArray.filter((i) => i.id === item.id);
+    console.log("filterData #", filterData);
+    filterData[0].color = event.target.value;
+    console.log("newArray #", filterData);
+    //setDataArray()
+  };
+
   return (
     <div className="appContainer">
       <header className="header">Redux Fundamentals Example</header>
@@ -73,6 +90,9 @@ function App() {
               handleDelete={handleDelete}
               handleCheckboxChange={handleCheckboxChange}
               checkedIds={checkedIds}
+              selectedColor={selectedColor}
+              // setSelectedColor={setSelectedColor}
+              selectedColorChange={selectedColorChange}
             />
           </div>
           <div className="footer">

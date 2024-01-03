@@ -5,6 +5,9 @@ const RenderList = ({
   handleDelete,
   handleCheckboxChange,
   checkedIds,
+  selectedColor,
+  // setSelectedColor,
+  selectedColorChange,
 }) => {
   return (
     <div>
@@ -19,10 +22,13 @@ const RenderList = ({
           />
           <div className="item-task">{item.value}</div>
           <div>
-            <select>
+            <select
+              value={selectedColor}
+              onChange={(event) => selectedColorChange(event, item)}
+            >
               <option value="0">Select car:</option>
               <option
-                value="1"
+                value="green"
                 style={{
                   color: "green",
                   fontWeight: "bold",
@@ -30,16 +36,25 @@ const RenderList = ({
               >
                 Green
               </option>
-              <option value="2" style={{ color: "red", fontWeight: "bold" }}>
+              <option value="red" style={{ color: "red", fontWeight: "bold" }}>
                 Red
               </option>
-              <option value="3" style={{ color: "blue", fontWeight: "bold" }}>
+              <option
+                value="blue"
+                style={{ color: "blue", fontWeight: "bold" }}
+              >
                 Blue
               </option>
-              <option value="4" style={{ color: "orange", fontWeight: "bold" }}>
+              <option
+                value="orange"
+                style={{ color: "orange", fontWeight: "bold" }}
+              >
                 Orange
               </option>
-              <option value="5" style={{ color: "purple", fontWeight: "bold" }}>
+              <option
+                value="purple"
+                style={{ color: "purple", fontWeight: "bold" }}
+              >
                 Purple
               </option>
             </select>

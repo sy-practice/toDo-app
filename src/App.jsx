@@ -6,7 +6,7 @@ function App() {
   const [input, setInput] = useState({});
   const [dataArray, setDataArray] = useState([]);
   const [checkedIds, setCheckedIds] = useState([]);
-  const [selectedColor, setSelectedColor] = useState("0");
+  const [selectedColor, setSelectedColor] = useState();
 
   const handleChange = (e) => {
     const uniqueIdentifier = `${Date.now()}_${Math.random()}`;
@@ -72,6 +72,10 @@ function App() {
     }
   };
 
+  const selectedGreenCheckBox = () => {
+    
+  };
+
   return (
     <div className="appContainer">
       <header className="header">Redux Fundamentals Example</header>
@@ -123,7 +127,11 @@ function App() {
             <div className="box4">
               <span>Filter by Color</span>
               <label>
-                <input type="checkbox" style={{ marginRight: "10px" }} />
+                <input
+                  type="checkbox"
+                  onChange={selectedGreenCheckBox}
+                  style={{ marginRight: "10px" }}
+                />
                 <span style={{ color: "green" }}>Green</span>
               </label>
               <label>

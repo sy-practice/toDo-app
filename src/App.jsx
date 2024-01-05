@@ -62,11 +62,14 @@ function App() {
   /* Do this later, select the color and add segregate the data based on the color selected*/
   const selectedColorChange = (event, item) => {
     console.log("selectedColorChange #", event.target.value, item);
-    const filterData = dataArray.filter((i) => i.id === item.id);
-    console.log("filterData #", filterData);
-    filterData[0].color = event.target.value;
-    console.log("newArray #", filterData);
-    //setDataArray()
+    const foundItem = dataArray.find((i) => i.id === item.id);
+
+    if (foundItem) {
+      const updatedDataArray = dataArray.map((i) =>
+        i.id === item.id ? { ...i, color: event.target.value } : i
+      );
+      setDataArray(updatedDataArray);
+    }
   };
 
   return (
